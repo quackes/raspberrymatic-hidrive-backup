@@ -19,7 +19,7 @@ access_token=$(curl -X POST \
 &client_secret=$CLIENT_SECRET\
 &grant_type=refresh_token\
 &refresh_token=$refresh_token" \
-https://www.hidrive.strato.com/oauth2/token | jq '.access_token' | tr -d '"')
+https://www.hidrive.strato.com/oauth2/token | grep -o '"access_token":"[^"]*' | grep -o '[^"]*$')
 
 
 # upload backup
