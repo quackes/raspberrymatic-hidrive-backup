@@ -15,4 +15,4 @@ curl -v -X POST --data "client_id=$CLIENT_ID\
 &client_secret=$CLIENT_SECRET\
 &grant_type=authorization_code\
 &code=$auth_code" \
-https://www.hidrive.strato.com/oauth2/token | jq '.refresh_token' | tr -d '"' > refresh_token
+https://www.hidrive.strato.com/oauth2/token | grep -o '"refresh_token":"[^"]*' | grep -o '[^"]*$' > refresh_token
